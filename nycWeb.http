@@ -1,0 +1,6 @@
+@nycWeb_HostAddress = http://localhost:5168
+
+GET {{nycWeb_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
