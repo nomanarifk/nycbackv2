@@ -30,8 +30,6 @@ namespace nycWeb.BusinessLogic
                 AiUsageConsent = dto.AiUsageConsent,
                 AvailabilityConsent = dto.AvailabilityConsent,
                 SharingConsent = dto.SharingConsent,
-                PayFees = dto.PayFees,
-                PaymentOption = dto.PaymentOption
             };
         }
 
@@ -129,7 +127,9 @@ namespace nycWeb.BusinessLogic
                 ProjectChoice = dto.ProjectChoice,
                 ProjectReason = dto.ProjectReason,
                 SessionChoice = dto.SessionChoice,
-                SessionExplanation = dto.SessionExplanation
+                SessionExplanation = dto.SessionExplanation,
+                PayFees = dto.PayFees,
+                PaymentOption = dto.PaymentOption
             };
         }
 

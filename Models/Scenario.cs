@@ -14,5 +14,8 @@ namespace nycWeb.Models
         //Facilitator
         public string SessionChoice { get; set; } = string.Empty;
         public string SessionExplanation { get; set; } = string.Empty;
+
+        public bool PayFees { get; set; }
+        public string PaymentOption { get; set; } = string.Empty;
     }
 }
