@@ -21,6 +21,7 @@ namespace nycWeb.BusinessLogic
                 achievements = MapAchievements(dto.Achievements),
                 reflective = MapReflective(dto.Reflective),
                 scenario = MapScenario(dto.Scenario),
+                
             };
         }
         public static Consents MapConsents(ConsentsDto dto)
@@ -63,15 +64,8 @@ namespace nycWeb.BusinessLogic
                 AcademicQualification = dto.AcademicQualification,
                 CurrentlyStudying = dto.CurrentlyStudying,
                 StudyInstitution = dto.StudyInstitution,
-                AreaOfStudy = dto.AreaOfStudy
-            };
-        }
-
-        public static WorkInfo MapWork(EducationDto dto)
-        {
-            return new WorkInfo
-            {
-                CurrentlyWorking = dto.CurrentlyWorking,
+                AreaOfStudy = dto.AreaOfStudy,
+                CurrentlyWorking = dto.CurrentlyStudying,
                 WorkInstitution = dto.WorkInstitution,
                 CurrentRoleDescription = dto.CurrentRoleDescription
             };
