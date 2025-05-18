@@ -27,5 +27,21 @@ namespace nycWeb.Controller
                 ? Ok(created)
                 : BadRequest();
         }
+
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var registration = await regBL.GetAllRegistrationDtoToReturn();
+
+            return Ok(registration);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Registration>> GetById(string id)
+        {
+            var reg = await regBL.GetByIdAsync(id);
+            if (reg == null) return NotFound();
+            return Ok(reg);
+        }
     }
 }

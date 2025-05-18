@@ -12,6 +12,7 @@ namespace nycWeb.Models
         public string RegistrationID { get; set; } = string.Empty;
         [BsonElement("role")]
         public string Role { get; set; }  = string.Empty;
+        public string Status { get; set; } = string.Empty;
         public DateTime DateTime { get; set; } = DateTime.Now;
         public Consents consents { get; set; } = null!;
         public PersonalInfo personalInfo { get; set; } = null!;

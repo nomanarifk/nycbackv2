@@ -17,10 +17,10 @@ namespace nycWeb.Services
             _RegistrationModel = database.GetCollection<Registration>("Registration");
         }
 
-        public async Task<List<Registration>> GetAllAsync() => 
+        public async Task<List<Registration>> GetAllAsync() =>
             await _RegistrationModel.Find(item => true).ToListAsync();
 
-        public async Task<Registration> GetAsync(string id) => 
+        public async Task<Registration> GetAsync(string id) =>
             await _RegistrationModel.Find(item => item.Id == id).FirstOrDefaultAsync();
 
         public async Task CreateAsync(Registration item) =>
@@ -31,5 +31,37 @@ namespace nycWeb.Services
 
         public async Task RemoveAsync(string id) =>
             await _RegistrationModel.DeleteOneAsync(item => item.Id == id);
+
+        public async Task<List<RegistrationDtoToReturn>> GetSummaryListAsync()
+        {
+            var rawList = await _RegistrationModel
+                .Find(_ => true)
+                .Project(r => new
+                {
+                    r.Id,
+                    r.Role,
+                    r.Status,
+                    r.personalInfo.FirstName,
+                    r.personalInfo.LastName,
+                    r.personalInfo.CurrentRegion,
+                    r.personalInfo.LocalCouncil,
+                    r.personalInfo.Jamatkhana
+                })
+                .ToListAsync();
+
+            var result = rawList.Select(r => new RegistrationDtoToReturn
+            {
+                Id = r.Id,
+                Role = r.Role,
+                FullName = $"{r.FirstName} {r.LastName}",
+                RegionalCouncil = r.CurrentRegion,
+                LocalCouncil = r.LocalCouncil,
+                Jamatkhana = r.Jamatkhana,
+                Status = string.IsNullOrWhiteSpace(r.Status) ? "Pending" : r.Status
+            }).ToList();
+
+            return result;
+        }    
+
     }
 }
