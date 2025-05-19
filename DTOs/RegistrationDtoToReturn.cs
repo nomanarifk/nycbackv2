@@ -20,5 +20,6 @@ namespace nycWeb.Models
         public string Jamatkhana { get; set; } = string.Empty;
 
         public string Status { get; set; } = string.Empty;
+        public DateTime CreatedAt { get; set; }
     }
 }

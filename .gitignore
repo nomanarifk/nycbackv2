@@ -25,6 +25,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Oo]ut/
+.vscode/
 
 # OS generated files
 .DS_Store

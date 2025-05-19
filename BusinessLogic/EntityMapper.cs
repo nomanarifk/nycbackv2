@@ -66,7 +66,7 @@ namespace nycWeb.BusinessLogic
                 CurrentlyStudying = dto.CurrentlyStudying,
                 StudyInstitution = dto.StudyInstitution,
                 AreaOfStudy = dto.AreaOfStudy,
-                CurrentlyWorking = dto.CurrentlyStudying,
+                CurrentlyWorking = dto.CurrentlyWorking,
                 WorkInstitution = dto.WorkInstitution,
                 CurrentRoleDescription = dto.CurrentRoleDescription
             };

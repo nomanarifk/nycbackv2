@@ -45,7 +45,8 @@ namespace nycWeb.Services
                     r.personalInfo.LastName,
                     r.personalInfo.CurrentRegion,
                     r.personalInfo.LocalCouncil,
-                    r.personalInfo.Jamatkhana
+                    r.personalInfo.Jamatkhana,
+                    r.DateTime
                 })
                 .ToListAsync();
 
@@ -57,11 +58,11 @@ namespace nycWeb.Services
                 RegionalCouncil = r.CurrentRegion,
                 LocalCouncil = r.LocalCouncil,
                 Jamatkhana = r.Jamatkhana,
-                Status = string.IsNullOrWhiteSpace(r.Status) ? "Pending" : r.Status
+                Status = string.IsNullOrWhiteSpace(r.Status) ? "Pending" : r.Status,
+                CreatedAt = r.DateTime.AddHours(5)
             }).ToList();
 
             return result;
-        }    
-
+        }
     }
 }

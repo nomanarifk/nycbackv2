@@ -41,24 +41,28 @@ namespace nycformweb.Controller
             return Ok(registration);
         }
 
-        // [HttpPost("CreateUser")]
-        // public async Task<IActionResult> CreateUser([FromBody] PortalUserDtoToCreate portalUser)
-        // {
-        //     if (portalUser == null)
-        //         return BadRequest("Invalid user data.");
+        [HttpPost("CreateUser")]
+        public async Task<IActionResult> CreateUser([FromBody] PortalUserDtoToCreate portalUser)
+        {
+            if (portalUser == null)
+                return BadRequest("Invalid user data.");
 
-        //     var userToCreate = new Models.PortalUser
-        //     {
-        //         Username = portalUser.Username,
-        //         Password = portalUser.Password,
-        //         Role = portalUser.Role
-        //     };
+            var existingUser = await portalUserService.GetUserByUsernameAsync(portalUser.Username);
+            if (existingUser != null)
+                return Conflict("User with this username already exists.");
 
-        //     var created = await portalUserService.CreateAsync(userToCreate);
+            var userToCreate = new Models.PortalUser
+            {
+                Username = portalUser.Username,
+                Password = portalUser.Password,
+                Role = portalUser.Role
+            };
 
-        //     return created != null
-        //         ? Ok(created)
-        //         : BadRequest();
-        // }
+            var created = await portalUserService.CreateAsync(userToCreate);
+
+            return created != null
+                ? Ok(created)
+                : BadRequest();
+        }
     }
 }

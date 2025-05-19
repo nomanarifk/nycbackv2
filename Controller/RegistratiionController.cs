@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using nycformweb.DTOs;
 using nycWeb.BusinessLogic;
 using nycWeb.DTOs;
 using nycWeb.Models;
@@ -42,6 +43,14 @@ namespace nycWeb.Controller
             var reg = await regBL.GetByIdAsync(id);
             if (reg == null) return NotFound();
             return Ok(reg);
+        }
+
+        [HttpGet("summary")]
+        public async Task<ActionResult<RegistrationSummaryDto>> GetRegistrationSummary()
+        {
+            var summary = await regBL.GetCounts();
+
+            return Ok(summary);
         }
     }
 }
