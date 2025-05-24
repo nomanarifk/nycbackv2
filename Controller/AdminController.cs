@@ -23,7 +23,7 @@ namespace nycformweb.Controller
             }
 
             GoogleCredential credential;
-            using (var stream = new FileStream("creds.json", FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream(jsonCreds, FileMode.Open, FileAccess.Read))
             {
                 credential = GoogleCredential.FromStream(stream)
                     .CreateScoped(scopes);
