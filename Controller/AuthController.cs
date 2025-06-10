@@ -41,6 +41,12 @@ namespace nycformweb.Controller
             return Ok(registration);
         }
 
+        [HttpGet("GetVersion")]
+        public async Task<IActionResult> GetVersion()
+        {
+            return Ok("1.0");
+        }
+
         [HttpPost("CreateUser")]
         public async Task<IActionResult> CreateUser([FromBody] PortalUserDtoToCreate portalUser)
         {
