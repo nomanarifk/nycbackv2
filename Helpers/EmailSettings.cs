@@ -8,7 +8,7 @@ namespace nycformweb.Helpers
     public class EmailSettings
     {
         public string From { get; set; } = null!;
-        public string FromName { get; set; }
+        public string FromName { get; set; } = null!;
         public string To { get; set; }
         public string ToName { get; set; }
         public string SmtpHost { get; set; }
