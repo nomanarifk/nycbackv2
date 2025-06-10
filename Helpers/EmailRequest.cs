@@ -8,6 +8,6 @@ namespace nycformweb.Helpers
     public class EmailRequest
     {
         public string Phone { get; set; }
-        public string Text { get; set; }
+        public string Text { get; set; } 
     }
 }

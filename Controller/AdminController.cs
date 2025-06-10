@@ -67,7 +67,7 @@ namespace nycformweb.Controller
 
         [HttpPost("sendFeedback")]
         public async Task<IActionResult> SendEmail([FromBody] EmailRequest request)
-        {
+        { 
             try
             {
                 string password = Encoding.UTF8.GetString(Convert.FromBase64String(_emailSettings.PasswordBase64));
