@@ -1,5 +1,6 @@
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using nycformweb.Helpers;
 using nycformweb.Services;
 using nycWeb.Services;
 
@@ -45,6 +46,7 @@ services.AddSingleton<RegistrationSequenceService>();
 services.AddSingleton<PortalUserService>();
 
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 
 var app = builder.Build();
 
